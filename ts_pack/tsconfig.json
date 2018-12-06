@@ -1,0 +1,17 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "target": "es5", //目标转义到支持es5版本
+    "allowJs": true, //ts文件中运行js写法
+    "typeRoots": [
+      "./nodemodules/@type", // 通过@types安装声明文件的文件目录
+      "./typings/modules" // 通过typings安装声明文件的文件路径
+    ]
+  },
+  "include": [
+    "./src/*"
+  ],
+  "exclude": [
+    "./node_module"
+    ]
+}
