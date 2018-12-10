@@ -1,21 +1,14 @@
-require.include('./moduleA')
+import * as _ from 'lodash'
 let page = 'pageA'
 
 if (page === 'pageA') {
-  require.ensure(['./subPageA'], function () {
-    var subPageA = require('./subPageA')
-  }, 'subPageA')
+  import(/*webpackChunkName:'subPageA'*/'./subPageA').then((subPageA) => {
+    console.log(subPageA);
+  })
 } else if (page === 'pageB') {
-  require.ensure(['./subPageB'], function () {
-    var subPageA = require('./subPageB')
-  }, 'subPageB')
+  import(/*webpackChunkName:'subPageB'*/'./subPageA').then((subPageB) => {
+    console.log(subPageB);
+  })
 }
 
-// import './subPageA'
-// import './subPageB'
-// import * as _ from 'lodash'
-require.ensure(['lodash'], function() {
-  var _ = require('lodash')
-  _.join(['1', '2'], '3')
-}, 'vendor')
 export default 'pageA'
