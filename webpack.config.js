@@ -15,8 +15,8 @@ module.exports = {
   },
   plugins: [
     new webpack.optimize.CommonsChunkPlugin({
-      async: 'async-common',
       children: true,
+      async: 'async-common',
       minChunk: 2
     }),
     new webpack.optimize.CommonsChunkPlugin({
