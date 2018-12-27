@@ -3,25 +3,31 @@ const path = require('path')
 
 module.exports = {
   entry: {
-    'pageA': './src/pageA',
-    'pageB': './src/pageB',
-    'vendor': ['lodash']
+    app: './src/app.js'
   },
   output: {
-    path: path.resolve(__dirname, './dist'),
+    path: path.resolve(__dirname, 'dist'),
     publicPath: './dist/',
-    filename: '[name].bundle.js',
-    chunkFilename: '[name].chunk.js'
+    filename: '[name].bundle.js'
   },
-  plugins: [
-    new webpack.optimize.CommonsChunkPlugin({
-      children: true,
-      async: 'async-common',
-      minChunk: 2
-    }),
-    new webpack.optimize.CommonsChunkPlugin({
-      names: ['vendor', 'manifest'], // 引用组件、类库、框架类代码bundle webpack生成代码bundle
-      minChunks: Infinity
-    })
-  ]
+  module: {
+    rules: [
+      {
+        test: /\.css$/,
+        loaders: [
+          'style-loader/useable',
+          'css-loader'
+        ]
+        // use: [
+        //   {
+        //     loader: 'style-loader/useable'
+        //   },
+        //   {
+        //     loader: 'css-loader'
+        //     // loader: 'file-loader'
+        //   }
+        // ]
+      }
+    ]
+  }
 }
